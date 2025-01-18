@@ -1,5 +1,18 @@
-2025-01-18 14:16:09,979 CfgNode({'prefix': 'RegDB', 'sample_method': 'identity_random', 'batch_size': 60, 'p_size': 6, 'k_size': 10, 'classification': True, 'triplet': True, 'center_cluster': False, 'center': False, 'sm_kl': True, 'bg_kl': True, 'IP': True, 'decompose': True, 'fb_dt': False, 'distalign': False, 'margin': 1.3, 'weight_KL': 2.5, 'weight_sid': 0.5, 'weight_sep': 0.5, 'update_rate': 0.2, 'optimizer': 'adam', 'lr': 0.00035, 'wd': 0.005, 'lr_step': [55, 95], 'fp16': True, 'num_epoch': 160, 'dataset': 'regdb', 'image_size': (256, 128), 'random_flip': True, 'random_crop': True, 'random_erase': True, 'color_jitter': False, 'padding': 10, 'drop_last_stride': True, 'pattern_attention': False, 'modality_attention': 0, 'mutual_learning': False, 'rerank': False, 'num_parts': 6, 'eval_interval': 5, 'start_eval': 0, 'log_period': 20, 'resume': '', 'num_id': 206, 'num_cam': 2, 'data_root': '../dataset/RegDB'})
-2025-01-18 14:16:11,540 Engine run starting with max_epochs=160.
-2025-01-18 14:16:22,843 Epoch[1] Batch [20]	Speed: 107.70 samples/sec	F_p: 0.0483	IN_p: 0.0000	acc: 0.0225	bg_kl: 0.8490	ce: 5.3337	id_pl: 5.3305	pse: 0.7760	sm_kl: 0.8574	tri: 8.6119	unad: 0.4530
-2025-01-18 14:16:28,093 Epoch[1] Complete. Time taken: 00:00:16.359
-2025-01-18 14:16:40,520 Engine run is terminating due to exception: [enforce fail at inline_container.cc:337] . unexpected pos 154860416 vs 154860312
+2025-01-18 16:14:15,426 CfgNode({'prefix': 'RegDB', 'sample_method': 'identity_random', 'batch_size': 60, 'p_size': 6, 'k_size': 10, 'classification': True, 'triplet': True, 'center_cluster': False, 'center': False, 'sm_kl': True, 'bg_kl': True, 'IP': True, 'decompose': True, 'fb_dt': False, 'distalign': False, 'margin': 1.3, 'weight_KL': 2.5, 'weight_sid': 0.5, 'weight_sep': 0.5, 'update_rate': 0.2, 'optimizer': 'adam', 'lr': 0.00035, 'wd': 0.005, 'lr_step': [55, 95], 'fp16': True, 'num_epoch': 160, 'dataset': 'regdb', 'image_size': (256, 128), 'random_flip': True, 'random_crop': True, 'random_erase': True, 'color_jitter': False, 'padding': 10, 'drop_last_stride': True, 'pattern_attention': False, 'modality_attention': 0, 'mutual_learning': False, 'rerank': False, 'num_parts': 6, 'eval_interval': 5, 'start_eval': 0, 'log_period': 20, 'resume': '', 'num_id': 206, 'num_cam': 2, 'data_root': '../dataset/RegDB'})
+2025-01-18 16:14:16,969 Engine run starting with max_epochs=160.
+2025-01-18 16:14:28,274 Epoch[1] Batch [20]	Speed: 107.67 samples/sec	F_p: 0.0484	IN_p: 0.0000	acc: 0.0217	bg_kl: 0.8469	ce: 5.3223	id_pl: 5.3174	pse: 0.7723	sm_kl: 0.8550	tri: 8.5796	unad: 0.4543
+2025-01-18 16:14:33,523 Epoch[1] Complete. Time taken: 00:00:16.366
+2025-01-18 16:14:46,062 Epoch[2] Complete. Time taken: 00:00:12.539
+2025-01-18 16:14:59,225 Epoch[3] Complete. Time taken: 00:00:13.159
+2025-01-18 16:15:11,921 Epoch[4] Complete. Time taken: 00:00:12.695
+2025-01-18 16:15:25,374 Model saved at checkpoints/regdb/RegDB/RegDB_model_5.pth
+2025-01-18 16:15:25,534 Engine run starting with max_epochs=1.
+2025-01-18 16:15:29,893 Epoch[1] Complete. Time taken: 00:00:04.302
+2025-01-18 16:15:29,893 Engine run complete. Time taken: 00:00:04.358
+2025-01-18 16:15:29,943 Engine run starting with max_epochs=1.
+2025-01-18 16:15:33,081 Epoch[1] Complete. Time taken: 00:00:03.079
+2025-01-18 16:15:33,081 Engine run complete. Time taken: 00:00:03.138
+2025-01-18 16:15:34,662 r1 precision = 53.98 , r10 precision = 88.50 , r20 precision = 93.40, mAP = 48.39
+2025-01-18 16:15:36,216 r1 precision = 52.91 , r10 precision = 89.42 , r20 precision = 96.07, mAP = 49.12
+2025-01-18 16:15:39,076 Epoch[5] Complete. Time taken: 00:00:27.155
+2025-01-18 16:15:39,335 Engine run is terminating due to exception: 

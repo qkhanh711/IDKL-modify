@@ -8,7 +8,11 @@ import numpy as np
 
 import cv2
 from layers.module.reverse_grad import ReverseGrad
-from models.resnet import resnet50, embed_net, convDiscrimination, Discrimination
+# from baselines.resnet import resnet50, embed_net, convDiscrimination, Discrimination
+from baselines.resnet import resnet50, Discrimination
+# from baselines.EfficientNet import efficientnet_v2_s
+# from baselines.shufflenet import shufflenet_v2_x2_0 
+from baselines.backbones import embed_net
 from utils.calc_acc import calc_acc
 
 from layers import TripletLoss, RerankLoss
@@ -196,7 +200,7 @@ class Baseline(nn.Module):
 
         self.drop_last_stride = drop_last_stride
         self.decompose = decompose
-        self.backbone = embed_net(drop_last_stride=drop_last_stride, decompose=decompose)
+        self.backbone = embed_net(drop_last_stride=drop_last_stride, decompose=decompose, model_name='resnet50')
 
         self.base_dim = 2048
         self.dim = 0
