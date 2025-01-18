@@ -347,11 +347,15 @@ class embed_net(nn.Module):
         super(embed_net, self).__init__()
 
         self.shared_module_fr = Shared_module_fr(drop_last_stride=drop_last_stride,
+                                                modality_attention=0,
                                                  )
         self.shared_module_bh = Shared_module_bh(drop_last_stride=drop_last_stride,
+                                                modality_attention=0,
                                                  )
 
-        self.special = Special_module(drop_last_stride=drop_last_stride)
+        self.special = Special_module(drop_last_stride=drop_last_stride,
+                                        modality_attention=0,
+                                      )
 
         self.decompose = decompose
         self.IN = nn.InstanceNorm2d(2048, track_running_stats=True, affine=True)

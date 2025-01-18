@@ -4,7 +4,7 @@ import pprint
 
 import torch
 import yaml
-from apex import amp
+# from apex import amp
 from torch import optim
 
 from data import get_test_loader
@@ -99,6 +99,7 @@ def train(cfg):
                      fb_dt=cfg.fb_dt,
                      IP=cfg.IP,
                      distalign=cfg.distalign)
+    
 
     def get_parameter_number(net):
         total_num = sum(p.numel() for p in net.parameters())
@@ -118,7 +119,7 @@ def train(cfg):
         optimizer = optim.SGD(model.parameters(), lr=cfg.lr, momentum=0.9, weight_decay=cfg.wd)
 
     # convert model for mixed precision training
-    model, optimizer = amp.initialize(model, optimizer, enabled=cfg.fp16, opt_level="O1")
+    # model, optimizer = amp.initialize(model, optimizer, enabled=cfg.fp16, opt_level="O1")
     if cfg.center:
         model.center_loss.centers = model.center_loss.centers.float()
     lr_scheduler = optim.lr_scheduler.MultiStepLR(optimizer=optimizer,

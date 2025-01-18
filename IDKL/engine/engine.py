@@ -3,7 +3,7 @@ import math
 import torch.nn as nn
 import numpy as np
 import os
-from apex import amp
+# from apex import amp
 from ignite.engine import Engine
 from ignite.engine import Events
 from torch.autograd import no_grad
@@ -83,8 +83,9 @@ def create_train_engine(model, optimizer, non_blocking=False):
                              epoch=epoch)
 
 
-        with amp.scale_loss(loss, optimizer) as scaled_loss:
-            scaled_loss.backward()
+        # with amp.scale_loss(loss, optimizer) as scaled_loss:
+        #     scaled_loss.backward()
+        scaled_loss = loss.backward()
         optimizer.step()
 
         return metric

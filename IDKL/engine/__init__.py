@@ -30,8 +30,13 @@ def get_trainer(dataset, model, optimizer, lr_scheduler=None, logger=None, write
     setattr(trainer, "rerank", rerank)
 
     # checkpoint handler
-    handler = ModelCheckpoint(save_dir, prefix, save_interval=eval_interval, n_saved=3, create_dir=True,
-                              save_as_state_dict=True, require_empty=False)
+    # handler = ModelCheckpoint(save_dir, prefix, save_interval=eval_interval, n_saved=3, create_dir=True,
+                            #   save_as_state_dict=True, require_empty=False)
+
+    handler = ModelCheckpoint(save_dir, prefix, n_saved=2, create_dir=True, require_empty=False)
+    # handler not using ignite
+    
+
     trainer.add_event_handler(Events.EPOCH_COMPLETED, handler, {"model": model})
 
     # metric
@@ -106,8 +111,8 @@ def get_trainer(dataset, model, optimizer, lr_scheduler=None, logger=None, write
     def epoch_started_callback(engine):
     
         epoch = engine.state.epoch
-        if model.mutual_learning:
-            model.update_rate = min(100 / (epoch + 1), 1.0) * model.update_rate_
+        # if model.mutual_learning:
+            # model.update_rate = min(100 / (epoch + 1), 1.0) * model.update_rate_
 
         kv_metric.reset()
         timer.reset()
