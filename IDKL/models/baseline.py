@@ -195,14 +195,13 @@ def modal_centroid_loss(F1, F2, labels, modalities, margin):
     # 返回损失的平均值
     return losses.mean()
 class Baseline(nn.Module):
-    def __init__(self, num_classes=None, drop_last_stride=False, decompose=False, **kwargs):
+    def __init__(self, num_classes=None, drop_last_stride=False, decompose=False, base_dim = 320, model_name = 'efficientnet', **kwargs):
         super(Baseline, self).__init__()
 
         self.drop_last_stride = drop_last_stride
         self.decompose = decompose
-        self.backbone = embed_net(drop_last_stride=drop_last_stride, decompose=decompose, model_name='resnet50')
-
-        self.base_dim = 2048
+        self.backbone = embed_net(drop_last_stride=drop_last_stride, decompose=decompose, model_name=model_name, base_dim=base_dim)
+        self.base_dim = base_dim
         self.dim = 0
         self.part_num = kwargs.get('num_parts', 0)
 
@@ -232,10 +231,10 @@ class Baseline(nn.Module):
         if self.decompose:
             self.classifier = nn.Linear(self.base_dim + self.dim * self.part_num, num_classes, bias=False)
             self.classifier_sp = nn.Linear(self.base_dim, num_classes, bias=False)
-            self.D_special = Discrimination()
+            self.D_special = Discrimination(self.base_dim)
             self.C_sp_f = nn.Linear(self.base_dim, num_classes, bias=False)
 
-            self.D_shared_pseu = Discrimination(2048)
+            self.D_shared_pseu = Discrimination(self.base_dim)
             self.grl = ReverseGrad()
 
         else:
@@ -261,9 +260,13 @@ class Baseline(nn.Module):
 
 
         feats = sh_pl
+        if feats.size(1) != self.base_dim:
+            print("feats size:{}".format(feats.size()))
+            fc = torch.nn.Linear(feats.size(1), self.base_dim).to(device="cuda") 
+            feats = fc(feats)  # (60, 192) → (60, self.base_dim)
 
         if not self.training:
-            if feats.size(0) == 2048:
+            if feats.size(0) == self.base_dim:
                 feats = self.bn_neck(feats.permute(1, 0))
                 logits = self.classifier(feats)
                 return logits  # feats #
@@ -351,7 +354,6 @@ class Baseline(nn.Module):
             loss += fb_loss
 
             metric.update({'f_dt': fb_loss.data})
-
         feat = self.bn_neck(feat)
         sp_pl = self.bn_neck_sp(sp_pl)
         sub_nb = sub + 0  ##模态标签

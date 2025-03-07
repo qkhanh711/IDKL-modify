@@ -15,7 +15,7 @@ from models.baseline import Baseline
 
 # from WarmUpLR import WarmUpStepLR
 
-def train(cfg): 
+def train(cfg, base_dim=2048, model_name = 'resnet50'): 
     # set logger
     log_dir = os.path.join("logs/", cfg.dataset, cfg.prefix)
     if not os.path.isdir(log_dir):
@@ -78,6 +78,8 @@ def train(cfg):
 
     # model
     model = Baseline(num_classes=cfg.num_id,
+                     base_dim=base_dim,
+                     model_name = model_name,
                      pattern_attention=cfg.pattern_attention,
                      modality_attention=cfg.modality_attention,
                      mutual_learning=cfg.mutual_learning,
@@ -167,14 +169,18 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--cfg", type=str, default="configs/softmax.yml")
      ################
-    parser.add_argument('--gpu', default='0', type=str,
+    parser.add_argument('--gpu', default='0,1', type=str,
                         help='gpu device ids for CUDA_VISIBLE_DEVICES')
+    parser.add_argument('--base_dim', default=2048, type=int,
+                        help='base feature dimension')
+    parser.add_argument('--model_name', default='resnet50', type=str,
+                        help='model name')
     ####################
     args = parser.parse_args()
 
     ######################
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
     ################
 
     # set random seed
@@ -206,4 +212,4 @@ if __name__ == '__main__':
 
     cfg.freeze()
 
-    train(cfg)
+    train(cfg, base_dim=args.base_dim, model_name= args.model_name)

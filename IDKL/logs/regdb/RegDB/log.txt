@@ -1,18 +1,70 @@
-2025-01-18 16:14:15,426 CfgNode({'prefix': 'RegDB', 'sample_method': 'identity_random', 'batch_size': 60, 'p_size': 6, 'k_size': 10, 'classification': True, 'triplet': True, 'center_cluster': False, 'center': False, 'sm_kl': True, 'bg_kl': True, 'IP': True, 'decompose': True, 'fb_dt': False, 'distalign': False, 'margin': 1.3, 'weight_KL': 2.5, 'weight_sid': 0.5, 'weight_sep': 0.5, 'update_rate': 0.2, 'optimizer': 'adam', 'lr': 0.00035, 'wd': 0.005, 'lr_step': [55, 95], 'fp16': True, 'num_epoch': 160, 'dataset': 'regdb', 'image_size': (256, 128), 'random_flip': True, 'random_crop': True, 'random_erase': True, 'color_jitter': False, 'padding': 10, 'drop_last_stride': True, 'pattern_attention': False, 'modality_attention': 0, 'mutual_learning': False, 'rerank': False, 'num_parts': 6, 'eval_interval': 5, 'start_eval': 0, 'log_period': 20, 'resume': '', 'num_id': 206, 'num_cam': 2, 'data_root': '../dataset/RegDB'})
-2025-01-18 16:14:16,969 Engine run starting with max_epochs=160.
-2025-01-18 16:14:28,274 Epoch[1] Batch [20]	Speed: 107.67 samples/sec	F_p: 0.0484	IN_p: 0.0000	acc: 0.0217	bg_kl: 0.8469	ce: 5.3223	id_pl: 5.3174	pse: 0.7723	sm_kl: 0.8550	tri: 8.5796	unad: 0.4543
-2025-01-18 16:14:33,523 Epoch[1] Complete. Time taken: 00:00:16.366
-2025-01-18 16:14:46,062 Epoch[2] Complete. Time taken: 00:00:12.539
-2025-01-18 16:14:59,225 Epoch[3] Complete. Time taken: 00:00:13.159
-2025-01-18 16:15:11,921 Epoch[4] Complete. Time taken: 00:00:12.695
-2025-01-18 16:15:25,374 Model saved at checkpoints/regdb/RegDB/RegDB_model_5.pth
-2025-01-18 16:15:25,534 Engine run starting with max_epochs=1.
-2025-01-18 16:15:29,893 Epoch[1] Complete. Time taken: 00:00:04.302
-2025-01-18 16:15:29,893 Engine run complete. Time taken: 00:00:04.358
-2025-01-18 16:15:29,943 Engine run starting with max_epochs=1.
-2025-01-18 16:15:33,081 Epoch[1] Complete. Time taken: 00:00:03.079
-2025-01-18 16:15:33,081 Engine run complete. Time taken: 00:00:03.138
-2025-01-18 16:15:34,662 r1 precision = 53.98 , r10 precision = 88.50 , r20 precision = 93.40, mAP = 48.39
-2025-01-18 16:15:36,216 r1 precision = 52.91 , r10 precision = 89.42 , r20 precision = 96.07, mAP = 49.12
-2025-01-18 16:15:39,076 Epoch[5] Complete. Time taken: 00:00:27.155
-2025-01-18 16:15:39,335 Engine run is terminating due to exception: 
+2025-03-07 14:52:18,635 {'IP': True,
+ 'batch_size': 60,
+ 'bg_kl': True,
+ 'center': False,
+ 'center_cluster': False,
+ 'classification': True,
+ 'color_jitter': False,
+ 'data_root': '../dataset/RegDB',
+ 'dataset': 'regdb',
+ 'decompose': True,
+ 'distalign': False,
+ 'drop_last_stride': True,
+ 'eval_interval': 5,
+ 'fb_dt': False,
+ 'fp16': True,
+ 'image_size': (256, 128),
+ 'k_size': 10,
+ 'log_period': 20,
+ 'lr': 0.00035,
+ 'lr_step': [55, 95],
+ 'margin': 1.3,
+ 'modality_attention': 0,
+ 'mutual_learning': False,
+ 'num_cam': 2,
+ 'num_epoch': 160,
+ 'num_id': 206,
+ 'num_parts': 6,
+ 'optimizer': 'adam',
+ 'p_size': 6,
+ 'padding': 10,
+ 'pattern_attention': False,
+ 'prefix': 'RegDB',
+ 'random_crop': True,
+ 'random_erase': True,
+ 'random_flip': True,
+ 'rerank': False,
+ 'resume': '',
+ 'sample_method': 'identity_random',
+ 'sm_kl': True,
+ 'start_eval': 0,
+ 'triplet': True,
+ 'update_rate': 0.2,
+ 'wd': 0.005,
+ 'weight_KL': 2.5,
+ 'weight_sep': 0.5,
+ 'weight_sid': 0.5}
+2025-03-07 14:52:19,859 Engine run starting with max_epochs=160.
+2025-03-07 14:52:28,027 Epoch[1] Batch [20]	Speed: 147.83 samples/sec	F_p: 0.0348	IN_p: 0.0000	acc: 0.0033	bg_kl: 0.8889	ce: 5.4295	id_pl: 5.4207	pse: 0.7731	sm_kl: 0.8982	tri: 8.8134	unad: 0.5578
+2025-03-07 14:52:32,203 Epoch[1] Complete. Time taken: 00:00:12.068
+2025-03-07 14:52:41,156 Epoch[2] Complete. Time taken: 00:00:08.952
+2025-03-07 14:52:50,842 Epoch[3] Complete. Time taken: 00:00:09.686
+2025-03-07 14:53:00,110 Epoch[4] Complete. Time taken: 00:00:09.268
+2025-03-07 14:53:10,051 Model saved at checkpoints/regdb/RegDB/RegDB_model_5.pth
+2025-03-07 14:53:10,194 Engine run starting with max_epochs=1.
+2025-03-07 14:53:13,142 Epoch[1] Complete. Time taken: 00:00:02.758
+2025-03-07 14:53:13,142 Engine run complete. Time taken: 00:00:02.947
+2025-03-07 14:53:13,231 Engine run starting with max_epochs=1.
+2025-03-07 14:53:15,421 Epoch[1] Complete. Time taken: 00:00:01.986
+2025-03-07 14:53:15,422 Engine run complete. Time taken: 00:00:02.190
+2025-03-07 14:53:16,687 r1 precision = 0.49 , r10 precision = 4.85 , r20 precision = 9.56, mAP = 1.62
+2025-03-07 14:53:17,852 r1 precision = 0.49 , r10 precision = 4.71 , r20 precision = 9.56, mAP = 1.64
+2025-03-07 14:53:18,335 Epoch[5] Complete. Time taken: 00:00:18.224
+2025-03-07 14:53:27,537 Epoch[6] Complete. Time taken: 00:00:09.202
+2025-03-07 14:53:37,485 Epoch[7] Complete. Time taken: 00:00:09.947
+2025-03-07 14:53:46,754 Epoch[8] Complete. Time taken: 00:00:09.269
+2025-03-07 14:53:57,097 Epoch[9] Complete. Time taken: 00:00:10.343
+2025-03-07 14:54:06,251 Model saved at checkpoints/regdb/RegDB/RegDB_model_10.pth
+2025-03-07 14:54:06,395 Engine run starting with max_epochs=1.
+2025-03-07 14:54:07,831 Engine run is terminating due to exception: 
+2025-03-07 14:54:07,834 Engine run is terminating due to exception: 

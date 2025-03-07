@@ -38,7 +38,7 @@ class convDiscrimination(nn.Module):
 
 
 class Discrimination(nn.Module):
-    def __init__(self, dim=2048):
+    def __init__(self, dim=192):
         super(Discrimination, self).__init__()
         self.fc1 = nn.Linear(dim, 100)
         self.bn1 = nn.BatchNorm1d(100)
@@ -234,8 +234,6 @@ class ResNet(nn.Module):
         return nn.Sequential(*layers)
 
     def forward(self, x):
-        # print("ResNet forward")
-        # print(x.size())
         x = self.conv1(x)
         x = self.bn1(x)
         x = self.relu(x)
